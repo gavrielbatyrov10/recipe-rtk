@@ -18,11 +18,11 @@ const AddRecipeForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='form' onSubmit={handleSubmit}>
       <input type="text" placeholder="Recipe Name" value={name} onChange={(e) => setName(e.target.value)} />
       <input type="text" placeholder="Ingredients" value={ingredients} onChange={(e) => setIngredients(e.target.value)} />
       <input type="text" placeholder="Instructions" value={instructions} onChange={(e) => setInstructions(e.target.value)} />
-      <button type="submit">Add Recipe</button>
+      <button className='add__btn' type="submit">Add Recipe</button>
     </form>
   );
 };

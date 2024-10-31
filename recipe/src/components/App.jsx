@@ -8,7 +8,7 @@ import AddRecipeForm from './AddRecipeForm';
 const App = () => {
   return (
     <div className='recipe__page'>
-      <h1>Recipe Book</h1>
+      <h1 className='title'>Recipe Book</h1>
       <SearchBar />
       <AddRecipeForm />
       <RecipeList />

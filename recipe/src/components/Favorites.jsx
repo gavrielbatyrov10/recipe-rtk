@@ -7,13 +7,13 @@ const Favorites = () => {
   const dispatch = useDispatch();
 
   return (
-    <div>
-      <h2>Favorites</h2>
+    <div className='favorites__container'>
+      <h2 className='favorite__title'>Favorites</h2>
       <ul>
         {favorites.map(recipe => (
-          <li key={recipe.id}>
+          <li className='recipe__name' key={recipe.id}>
             {recipe.name}
-            <button onClick={() => dispatch(removeFavorite(recipe.id))}>Remove</button>
+            <button className='btn' onClick={() => dispatch(removeFavorite(recipe.id))}>Remove</button>
           </li>
         ))}
       </ul>
