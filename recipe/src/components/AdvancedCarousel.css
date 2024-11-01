@@ -1,0 +1,70 @@
+/* src/components/AdvancedCarousel.css */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px; /* Adjust as needed */
+    overflow: hidden; /* Hides non-active images */
+    margin: auto; /* Center carousel */
+  }
+  
+  .carousel {
+    display: flex;
+    transition: transform 0.5s ease; /* Smooth transition */
+  }
+  
+  .carousel-card {
+    min-width: 100%; /* Ensures each card takes full width */
+    opacity: 0; /* Initially hide */
+    transition: opacity 0.5s ease; /* Smooth opacity transition */
+  }
+  
+  .carousel-card.active {
+    opacity: 1; /* Show active */
+  }
+  
+  .carousel-card.hidden {
+    display: none; /* Completely hide non-active items */
+  }
+  
+  .card-image {
+    width: 100%;
+    height: auto;
+  }
+  
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+  }
+  
+  .left {
+    left: 10px; /* Adjust as needed */
+  }
+  
+  .right {
+    right: 10px; /* Adjust as needed */
+  }
+  
+  .carousel-dots {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #bbb;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  
+  .dot.active {
+    background-color: #717171; /* Color for active dot */
+  }
+  
