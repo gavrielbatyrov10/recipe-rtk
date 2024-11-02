@@ -15,6 +15,10 @@ const Navbar = () => {
     setTimeout(() => setDropdownOpen(false), 500); // Wait for animation to complete
   };
 
+  const handleLinkClick = () => {
+    setDropdownOpen(false); // Close dropdown on link click
+  };
+
   return (
     <div>
       {/* Navbar */}
@@ -29,13 +33,16 @@ const Navbar = () => {
           >
             Products
             {isDropdownOpen && (
-              <div className={`dropdown ${isClosing ? 'fade-up' : ''}`} onMouseLeave={handleMouseLeave}>
+              <div
+                className={`dropdown ${isClosing ? 'fade-up' : ''}`}
+                onMouseLeave={handleMouseLeave}
+              >
                 <div className="dropdown-content">
-                  <a href="#mac">Home</a>
-                  <a href="#ipad">Hover Link</a>
-                  <a href="#iphone">link</a>
-                  <a href="#watch">Link</a>
-                  <a href="#airpods">Link</a>
+                  <a href="#mac" onClick={handleLinkClick}>Home</a>
+                  <a href="#ipad" onClick={handleLinkClick}>Hover Link</a>
+                  <a href="#iphone" onClick={handleLinkClick}>Link</a>
+                  <a href="#watch" onClick={handleLinkClick}>Link</a>
+                  <a href="#airpods" onClick={handleLinkClick}>Link</a>
                 </div>
               </div>
             )}
@@ -46,14 +53,9 @@ const Navbar = () => {
       </nav>
 
       {/* Blur overlay */}
-      {isDropdownOpen && <div className="blur-overlay" onClick={() => setDropdownOpen(false)}></div>}
-
-      {/* Main content */}
-      <main className="content">
-        <section className="page-section">Content Section 1</section>
-        <section className="page-section">Content Section 2</section>
-        <section className="page-section">Content Section 3</section>
-      </main>
+      {isDropdownOpen && (
+        <div className="blur-overlay" onClick={() => setDropdownOpen(false)}></div>
+      )}
     </div>
   );
 };
