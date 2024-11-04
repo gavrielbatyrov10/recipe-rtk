@@ -1,62 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './navbar.css';
 
 const Navbar = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-  const [isClosing, setIsClosing] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  const handleMouseEnter = () => {
-    setDropdownOpen(true);
-    setIsClosing(false); // Reset closing state when opening
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
 
-  const handleMouseLeave = () => {
-    setIsClosing(true); // Trigger fade-up animation
-    setTimeout(() => setDropdownOpen(false), 500); // Wait for animation to complete
-  };
-
-  const handleLinkClick = () => {
-    setDropdownOpen(false); // Close dropdown on link click
-  };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <div>
-      {/* Navbar */}
-      <nav className="navbar">
-        <div className="navbar-links">
+    <header className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+      <div className="navbar-container">
+        <div className="navbar-logo">Brand</div>
+        <nav className="navbar-links">
           <a href="#home">Home</a>
-          <a
-            href="#products"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            className="dropdown-link"
+          <div
+            className="dropdown"
+            onMouseEnter={() => setDropdownOpen(true)}
+            onMouseLeave={() => setDropdownOpen(false)}
           >
-            Products
+            <a href="#products" className="dropdown-link">Products</a>
             {isDropdownOpen && (
-              <div
-                className={`dropdown ${isClosing ? 'fade-up' : ''}`}
-                onMouseLeave={handleMouseLeave}
-              >
-                <div className="dropdown-content">
-                  <a href="#mac" onClick={handleLinkClick}>Home</a>
-                  <a href="#ipad" onClick={handleLinkClick}>Hover Link</a>
-                  <a href="#iphone" onClick={handleLinkClick}>Link</a>
-                  <a href="#watch" onClick={handleLinkClick}>Link</a>
-                  <a href="#airpods" onClick={handleLinkClick}>Link</a>
-                </div>
+              <div className="dropdown-menu">
+                <a href="#product1">Product 1</a>
+                <a href="#product2">Product 2</a>
+                <a href="#product3">Product 3</a>
               </div>
             )}
-          </a>
+          </div>
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
-        </div>
-      </nav>
-
-      {/* Blur overlay */}
-      {isDropdownOpen && (
-        <div className="blur-overlay" onClick={() => setDropdownOpen(false)}></div>
-      )}
-    </div>
+        </nav>
+        <button className="navbar-cta">Sign Up</button>
+      </div>
+    </header>
   );
 };
 

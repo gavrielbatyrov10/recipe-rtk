@@ -1,138 +1,273 @@
+/* Basic Reset */
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Navbar Styling */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+  opacity: 1;
+}
+
+/* Navbar Scrolled State Animation */
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Navbar Container */
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  max-width: 1200px;
+  margin: auto;
+  animation: fadeIn 0.5s ease;
+}
+
+/* Logo Animation */
+.navbar-logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  transition: transform 0.3s ease, color 0.3s ease, opacity 0.3s ease;
+}
+
+/* Logo Hover Animation */
+.navbar-logo:hover {
+  transform: scale(1.1) rotate(3deg);
+  color: #0071e3;
+  opacity: 0.8;
+}
+
+/* Navbar Links */
+.navbar-links {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-links a {
+  margin: 0 1.5rem;
+  font-size: 1rem;
+  color: #333;
+  text-decoration: none;
+  position: relative;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease, transform 0.2s ease, filter 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* Link Hover Animation */
+.navbar-links a:hover {
+  color: #0071e3;
+  transform: translateY(-3px) rotate(1deg);
+  filter: brightness(1.1);
+  box-shadow: 0 0 15px rgba(0, 113, 227, 0.5);
+  animation: bounce 0.3s;
+}
+
+/* Dropdown Styling */
+.dropdown {
+  position: relative;
+}
+
+/* Dropdown Link Animation */
+.dropdown-link {
+  transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Dropdown Link Hover Animation */
+.dropdown-link:hover {
+  color: #0071e3;
+  transform: scale(1.05);
+}
+
+/* Dropdown Menu Animation */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  animation: slideIn 0.3s ease;
+}
+
+/* Dropdown Animation on Hover */
+.dropdown:hover .dropdown-menu {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Dropdown Link Animation */
+.dropdown-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Dropdown Link Hover Animation */
+.dropdown-menu a:hover {
+  background-color: rgba(0, 113, 227, 0.1);
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 113, 227, 0.5);
+}
+
+/* CTA Button Styling */
+.navbar-cta {
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  color: #ffffff;
+  background-color: #0071e3;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* CTA Button Hover Animation */
+.navbar-cta:hover {
+  background-color: #005bb5;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 15px rgba(0, 113, 227, 0.5);
+}
+
+/* Active Link Animation */
+.navbar-links a:active {
+  transform: scale(0.95);
+}
+
+/* Responsive Animation */
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: column;
   }
-  
-  body, html {
-    margin: 0;
-    font-family: Arial, sans-serif;
+
+  .navbar-links {
+    flex-direction: column;
   }
-  
-  .content {
-    padding: 20px;
-  }
-  
-  .page-section {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    background-color: #f9f9f9;
-  }
-  
-  .navbar {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background-color: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(8px);
-    display: flex;
-    justify-content: center;
-    padding: 1rem 2rem;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-  }
-  
+
   .navbar-links a {
-    color: #333;
-    margin: 0 1.5rem;
-    text-decoration: none;
-    font-size: 1rem;
-    position: relative;
-    transition: color 0.3s ease;
+    margin: 1rem 0;
+    transform: scale(1);
   }
-  
+
   .navbar-links a:hover {
-    color: #0071e3;
+    transform: scale(1.05);
   }
-  
-  /* Dropdown Styles */
-  .dropdown-link {
-    position: relative;
-  }
-  
-  .dropdown {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-    z-index: 5;
-  
-    /* Fade-in and slide-down animation */
+}
+
+/* Keyframe Animations */
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
     opacity: 0;
-    transform: translateY(-20%);
-    animation: dropdownFadeIn 0.5s ease forwards;
   }
-  
-  @keyframes dropdownFadeIn {
-    0% {
-      opacity: 0;
-      transform: translateY(-20%);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
-  
-  /* Fade-up animation for closing */
-  .fade-up {
-    animation: dropdownFadeOut 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  @keyframes dropdownFadeOut {
-    0% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    100% {
-      opacity: 0;
-      transform: translateY(-20%);
-    }
+  to {
+    opacity: 1;
   }
-  
-  .dropdown-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 20px;
-    width: 80%;
-    max-width: 900px;
-    padding: 2rem;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
   }
-  
-  .dropdown-content a {
-    font-size: 1.5rem;
-    color: #333;
-    text-decoration: none;
-    padding: 1rem;
-    text-align: center;
-    transition: color 0.3s ease;
-    border-radius: 8px;
+  50% {
+    transform: translateY(-5px);
   }
-  
-  .dropdown-content a:hover {
-    color: #0071e3;
-    background-color: rgba(0, 113, 227, 0.1);
+}
+
+/* Glow effect for navbar links */
+.navbar-links a {
+  transition: box-shadow 0.3s ease;
+}
+
+.navbar-links a:hover {
+  box-shadow: 0 0 10px rgba(0, 113, 227, 0.5);
+}
+
+/* Pulsating animation for navbar logo on scroll */
+.navbar-logo {
+  animation: pulse 2s infinite alternate;
+}
+
+/* Focusing effect for navbar links */
+.navbar-links a:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 113, 227, 0.5);
+}
+
+/* Focusing effect for CTA button */
+.navbar-cta:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 113, 227, 0.5);
+}
+
+/* Additional animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
-  
-  /* Blur overlay effect */
-  .blur-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(10px);
-    z-index: 1;
-    transition: backdrop-filter 0.3s ease;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes backgroundAnimation {
+  0% {
+    background: #0071e3;
+  }
+  50% {
+    background: #005bb5;
+  }
+  100% {
+    background: #0071e3;
+  }
+}
+
+.navbar {
+  animation: backgroundAnimation 5s infinite alternate;
+}
+
+body {
+  height: 200vh;
+}
